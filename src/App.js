@@ -1,26 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { World} from "./World";
+import {useSelector} from "react-redux";
 
-function App() {
+
+const _Test = (props) => {
+  return props.lists.map(l => <div>{l}</div>)
+};
+
+const App = (props) => {
+  const lists = useSelector( state => state.lists);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+        <button onClick={() => props.addList('test list f')}>click</button>
+        <_Test lists={lists}/>
+      </div>
   );
-}
+};
 
 export default App;
